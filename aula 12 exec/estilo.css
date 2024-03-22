@@ -1,0 +1,45 @@
+body{
+    background-color:cadetblue;
+}
+
+header{
+    font: normal 28pt Arial;
+    color: rgb(127, 255, 249);
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px black;
+}
+
+section{
+    background: white;
+    border-radius: 10px;
+    padding: 100px;
+    width: 250px;
+    height: 1px;
+    margin: auto;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.486);
+}
+
+div#anodenascimento{
+    margin-top: -80px;
+    margin-left: -90px;
+    margin-bottom: 20px;
+    font: normal 13pt arial;    
+}
+
+div#sexo{
+    margin-left: -90px;
+    font: normal 13pt arial;
+    margin-bottom: 15px;
+}
+
+div#botão{
+    text-align: center;
+}
+
+div#frase{
+    margin-top: 15px;
+    text-align: center;
+    font: normal 14pt arial;
+}
