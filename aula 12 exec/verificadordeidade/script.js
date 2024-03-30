@@ -8,10 +8,12 @@ function Verificar(){
         return anodenascimento <= (year-18)
     }
 
+
+  
     var ano = Number(anot.value)
 
     if(maiordeidade(ano) && sex == 'Feminino'){
-        frase.innerText = 'Você é uma mulher maior de idade.'
+        frase.innerText = `Você é uma mulher de ${ano} anos.`
     } else if(maiordeidade(ano) && sex == 'Masculino'){
         frase.innerText = 'Você é um homem maior de idade.'
     } else if(!maiordeidade(ano) && sex == 'Feminino'){
@@ -20,6 +22,5 @@ function Verificar(){
         frase.innerText = 'Você é um homem menor de idade.'
     }
 
-  
     
 }
