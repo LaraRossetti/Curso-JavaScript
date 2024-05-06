@@ -10,8 +10,15 @@ function Contar(){
    var passo = Number(passo.value)
 
 
-    var resultado = inicio + fim
-    frase.innerHTML = `Esse é o resultado: ${resultado}.`
+
+
+   for(var c = inicio; c <= fim; c = c + passo){
+        frase.innerHTML += `-> ${c} ` 
+        
+   }
+   
+   //frase.innerHTML = 'fim'
+   
 
 
 }
