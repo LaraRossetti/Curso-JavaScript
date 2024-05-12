@@ -8,7 +8,7 @@ function Contar(){
    
 
 
-    if(inicio.value.lenght == 0 || fim.value.lenght == 0 || passo.value.lenght == 0){
+    if(inicio.value.length == 0 || fim.value.length == 0 || passo.value.length == 0){
         window.alert('[ERRO] Verifique os dados e tente novamente!')
         frase.innerHTML = 'Não é possível contar.'
     }else{
@@ -17,8 +17,13 @@ function Contar(){
         var fim = Number(fim.value)
         var passo = Number(passo.value)
 
-        frase.innerHTML = 'Contando:'
+        frase.innerHTML = 'Contando: <br>'
         
+        if(passo <= 0){
+            window.alert('Passo inválido! Considerando o passo = 1.')
+            passo = 1
+        }
+
         //Contagem crescente
         if(inicio < fim){ 
             for(var c = inicio; c <= fim; c = c + passo){
