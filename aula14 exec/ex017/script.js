@@ -10,6 +10,13 @@ function Tabuada(){
         var numero = Number(numero.value)
     }
     
+    tabuada.innerHTML = ''
+
+    for(var c = 0; c <= 10; c++){
+        var item = window.document.createElement('option')
+        item.text = `${numero} x ${c} = ${numero*c}`
+        tabuada.appendChild(item)
+    }
 
 
 }
