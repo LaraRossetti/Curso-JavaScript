@@ -31,8 +31,13 @@ function Adicionar(){
         item.text = `O número ${numero.value} foi adicionado.`
         analisador.appendChild(item) 
         valores.push(Number(numero.value))
-    }else{
-        window.alert('Não foi possível adicionar na lista, tente novamente!')
+        resposta.innerHTML = ''
+    }else if(ehnumero(numero.value) && tanalista(numero.value, valores)){
+        window.alert('Esse número já está na lista, escolha outro e tente novamente!')
+        resposta.innerHTML = ''
+    }else if(!ehnumero(numero.value) && !tanalista(numero.value, valores)){
+        window.alert('Esse número está fora da faixa permitida, escolha outro e tente novamente!')
+        resposta.innerHTML = ''
     }
     
 }
@@ -41,15 +46,30 @@ function Finalizar(){
 
     resposta.innerText = `Foram adicionados ${valores.length} números à lista.`
     resposta.innerHTML += `<p>A soma dos valores na lista é ${soma(valores)}.</p>`
-    resposta.innerHTML += `<p>A média dos valores na lista é ${media(valores)}</p>.` 
+    resposta.innerHTML += `<p>A média dos valores na lista é ${media(valores)}.</p>`
+    resposta.innerHTML += `<p>O maior número da lista é ${maiornumero(valores)}.</p>`
+    resposta.innerHTML += `<p>O menor número da lista é ${menornumero(valores)}.</p>`
 }
 
-function maiornumero(){
-
+function maiornumero(v){
+    
+    var maior = 0
+    for(var posição = 0; posição < v.length; posição++){
+        if(maior < v[posição]){
+            maior = v[posição]
+        }
+    }
+    return maior
 }
 
-function menornumero(){
-
+function menornumero(v){
+    var menor = v[0]
+    for(var posição = 0; posição < v.length; posição++){
+        if(menor > v[posição]){
+            menor = v[posição]
+        }
+    }
+    return menor
 }
 
 function media(v){
