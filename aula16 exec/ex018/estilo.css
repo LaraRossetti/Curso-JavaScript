@@ -27,7 +27,8 @@ option{
         width: 100px;
 }
 
-select{
-        background-color:azure;
+select#selectanalisador{
+        background-color:rgba(240, 255, 255, 0.699);
+        width: 200px;
 }
 
