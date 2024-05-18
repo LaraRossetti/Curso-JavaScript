@@ -3,9 +3,15 @@ var analisador = window.document.getElementById('selectanalisador')
 let resposta = window.document.getElementById('resposta')
 let valores = []
 
-
-function ehnumero(n){
+function tanafaixa(n){
     if(Number(n) >= 1 && Number(n) <= 100){
+        return true
+    }else{
+        return false
+    }
+}
+function ehnumero(n){
+    if(n.length != 0){
         return true
     }else{
         return false
@@ -25,30 +31,42 @@ function tanalista(n,v){
 function Adicionar(){
 
 
-    if(ehnumero(numero.value) && !tanalista(numero.value, valores)){
+    if(ehnumero(numero.value) && tanafaixa(numero.value) && !tanalista(numero.value, valores)){
        
         var item = window.document.createElement('option')
         item.text = `O número ${numero.value} foi adicionado.`
         analisador.appendChild(item) 
         valores.push(Number(numero.value))
         resposta.innerHTML = ''
-    }else if(ehnumero(numero.value) && tanalista(numero.value, valores)){
+        numero.value = ''
+    }else if(ehnumero(numero.value) && tanafaixa(numero.value) && tanalista(numero.value, valores)){
         window.alert('Esse número já está na lista, escolha outro e tente novamente!')
         resposta.innerHTML = ''
-    }else if(!ehnumero(numero.value) && !tanalista(numero.value, valores)){
+        numero.value = ''
+    }else if(ehnumero(numero.value) && !tanafaixa(numero.value) && !tanalista(numero.value, valores)){
         window.alert('Esse número está fora da faixa permitida, escolha outro e tente novamente!')
         resposta.innerHTML = ''
+        numero.value = ''
+    }else if(!ehnumero(numero.value)){
+        window.alert('Escreva um número para adicionar à lista.')
+        resposta.innerHTML = ''
+        numero.value = ''
     }
     
 }
 
 function Finalizar(){
 
-    resposta.innerText = `Foram adicionados ${valores.length} números à lista.`
-    resposta.innerHTML += `<p>A soma dos valores na lista é ${soma(valores)}.</p>`
-    resposta.innerHTML += `<p>A média dos valores na lista é ${media(valores)}.</p>`
-    resposta.innerHTML += `<p>O maior número da lista é ${maiornumero(valores)}.</p>`
-    resposta.innerHTML += `<p>O menor número da lista é ${menornumero(valores)}.</p>`
+    if(valores.length != 0){
+        resposta.innerText = `Foram adicionados ${valores.length} números à lista.`
+        resposta.innerHTML += `<p>A soma dos valores na lista é ${soma(valores)}.</p>`
+        resposta.innerHTML += `<p>A média dos valores na lista é ${media(valores)}.</p>`
+        resposta.innerHTML += `<p>O maior número da lista é ${maiornumero(valores)}.</p>`
+        resposta.innerHTML += `<p>O menor número da lista é ${menornumero(valores)}.</p>`
+    }else{
+        window.alert('Nenhum número foi adicionado à lista.')
+    }
+   
 }
 
 function maiornumero(v){
@@ -90,11 +108,16 @@ function soma(v){
 }
 
 function Resetar(){
-    resposta.innerHTML = ''
-    valores = []
-    numero.value = ''
+    if(valores.length != 0){
+        resposta.innerHTML = ''
+        valores = []
+        numero.value = ''
 
-    while(analisador.firstChild){
+        while(analisador.firstChild){
         analisador.removeChild(analisador.firstChild)
+        }
+    }else{
+        window.alert('O analisador já está reinicializado!')
     }
+    
 }
