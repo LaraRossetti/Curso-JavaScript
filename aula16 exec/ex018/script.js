@@ -88,3 +88,13 @@ function soma(v){
     }
     return soma 
 }
+
+function Resetar(){
+    resposta.innerHTML = ''
+    valores = []
+    numero.value = ''
+
+    while(analisador.firstChild){
+        analisador.removeChild(analisador.firstChild)
+    }
+}
